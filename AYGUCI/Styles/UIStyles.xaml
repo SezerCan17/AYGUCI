@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="PrimaryBG" Color="#0A121A"/>
+    <SolidColorBrush x:Key="PanelBG" Color="#111B24"/>
+    <SolidColorBrush x:Key="BorderColor" Color="#1A2632"/>
+    <SolidColorBrush x:Key="AccentBlue" Color="#2196F3"/>
+    <SolidColorBrush x:Key="SuccessGreen" Color="#4CAF50"/>
+    <SolidColorBrush x:Key="WarningOrange" Color="#FF9800"/>
+    <SolidColorBrush x:Key="CriticalRed" Color="#F44336"/>
+
+    <SolidColorBrush x:Key="TextMain" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="TextDim" Color="#8A9BA8"/>
+
+    <Style x:Key="MainPanelBorderStyle" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource PanelBG}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderColor}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="CornerRadius" Value="4"/>
+    </Style>
+
+</ResourceDictionary>
