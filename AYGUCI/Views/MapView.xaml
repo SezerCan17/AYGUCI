@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="AYGUCI.Views.MapView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:gmap="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
+        Background="{StaticResource PanelBG}">
+    <Grid>
+        <gmap:GMapControl x:Name="MainMap" 
+                  Zoom="10" 
+                  MaxZoom="24" 
+                  MinZoom="1"
+                  MouseWheelZoomType="MousePositionWithoutCenter"
+                  IgnoreMarkerOnMouseWheel="True"/>
+    </Grid>
+</UserControl>
