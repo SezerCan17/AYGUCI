@@ -24,16 +24,8 @@
             </Grid.ColumnDefinitions>
 
             <views:IHAListView Grid.Column="0" />
-
             <views:MapView Grid.Column="2" />
-
-            <!--<Border Grid.Column="2" Background="{StaticResource PanelBG}" BorderBrush="{StaticResource BorderColor}" BorderThickness="1" CornerRadius="4">
-                <TextBlock Text="&#xE809; CANLI HARİTA MODÜLÜ" FontFamily="Segoe UI" FontSize="20" Foreground="{StaticResource TextDim}" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.3"/>
-            </Border>-->
-
-            <Border Grid.Column="4" Background="{StaticResource PanelBG}" BorderBrush="{StaticResource BorderColor}" BorderThickness="1" CornerRadius="4">
-                <TextBlock Text="SEÇİLİ İHA BİLGİLERİ" Foreground="{StaticResource TextDim}" FontSize="16" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.3"/>
-            </Border>
+            <views:Selected_IHA_View Grid.Column="4"/>
         </Grid>
 
         <Grid Grid.Row="2" Margin="20,0,20,20">
@@ -43,15 +35,13 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-       
-            <Border Grid.Column="0" Background="{StaticResource PanelBG}" BorderBrush="{StaticResource BorderColor}" BorderThickness="1" CornerRadius="4">
-                <TextBlock Text="GÖREV ile ilgili Herşey" Foreground="{StaticResource TextDim}" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.3"/>
+            <Border Grid.Column="0" Background="{StaticResource PanelBG}" 
+                    BorderBrush="{StaticResource BorderColor}" BorderThickness="1" CornerRadius="4">
+                <TextBlock Text="GÖREV BİLGİLERİ" Foreground="{StaticResource TextDim}" 
+                           HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.3"/>
             </Border>
 
-            <Border Grid.Column="2" Background="{StaticResource PanelBG}" BorderBrush="{StaticResource BorderColor}" BorderThickness="1" CornerRadius="4">
-                <TextBlock Text="Bildirimler" Foreground="{StaticResource TextDim}" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.3"/>
-            </Border>
+            <views:NotificationView Grid.Column="2"/>
         </Grid>
-
     </Grid>
 </Window>

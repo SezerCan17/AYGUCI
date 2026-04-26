@@ -1,0 +1,185 @@
+﻿<UserControl x:Class="AYGUCI.Views.NotificationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="{StaticResource PanelBG}">
+
+    <UserControl.Resources>
+
+        <Style x:Key="NotificationButtonStyle" TargetType="Button">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="6" SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Opacity" Value="0.8"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Opacity" Value="0.6"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ScrollBar">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Width" Value="6"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ScrollBar">
+                        <Border Background="Transparent">
+                            <Track x:Name="PART_Track" IsDirectionReversed="true">
+                                <Track.Thumb>
+                                    <Thumb>
+                                        <Thumb.Template>
+                                            <ControlTemplate TargetType="Thumb">
+                                                <Border Background="{StaticResource BorderColor}" CornerRadius="3" Margin="0,2"/>
+                                            </ControlTemplate>
+                                        </Thumb.Template>
+                                    </Thumb>
+                                </Track.Thumb>
+                            </Track>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="{StaticResource BorderColor}" BorderThickness="1" CornerRadius="4" Margin="0,0,0,5" Height="35">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" Text="Bildirimler" Foreground="{StaticResource AccentBlue}" 
+                           FontSize="14" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0,0,0"/>
+
+                <Button Grid.Column="1" Style="{StaticResource NotificationButtonStyle}" Background="Gray" Margin="2" ToolTip="Bilgi Mesajları">
+                    <TextBlock Text="&#xE946;" FontFamily="Segoe MDL2 Assets" Foreground="White" FontSize="12"/>
+                </Button>
+
+                <Button Grid.Column="2" Style="{StaticResource NotificationButtonStyle}" Background="{StaticResource WarningOrange}" Margin="2" ToolTip="Uyarılar">
+                    <TextBlock Text="&#xE7BA;" FontFamily="Segoe MDL2 Assets" Foreground="White" FontSize="12"/>
+                </Button>
+
+                <Button Grid.Column="3" Style="{StaticResource NotificationButtonStyle}" Background="{StaticResource CriticalRed}" Margin="2" ToolTip="Kritik Hatalar">
+                    <TextBlock Text="&#xEA39;" FontFamily="Segoe MDL2 Assets" Foreground="White" FontSize="12"/>
+                </Button>
+
+                <Button Grid.Column="4" Style="{StaticResource NotificationButtonStyle}" Background="White" Margin="2" ToolTip="Tümünü Temizle">
+                    <TextBlock Text="&#xE74D;" FontFamily="Segoe MDL2 Assets" Foreground="#222222" FontSize="12" FontWeight="Bold"/>
+                </Button>
+            </Grid>
+        </Border>
+
+        <ListBox Grid.Row="1" Background="Transparent" BorderThickness="0" 
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="Margin" Value="0,0,0,5"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ListBoxItem">
+                                <ContentPresenter/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListBox.ItemContainerStyle>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="{StaticResource BorderColor}" CornerRadius="4" Padding="0" MinHeight="40">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4"/>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Border Grid.Column="0" Background="{StaticResource WarningOrange}" CornerRadius="4,0,0,4"/>
+
+                            <TextBlock Grid.Column="1" Text="14:22" Foreground="{StaticResource TextDim}" 
+                                       FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                            <TextBlock Grid.Column="2" Text="İHA-01 Batarya seviyesi %20'nin altına düştü." 
+                                       Foreground="{StaticResource TextMain}" FontSize="12" 
+                                       TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,5,10,5"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+            <ListBoxItem>
+                <Border Background="{StaticResource BorderColor}" CornerRadius="4" Padding="0" MinHeight="40">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Background="{StaticResource WarningOrange}" CornerRadius="4,0,0,4"/>
+                        <TextBlock Grid.Column="1" Text="14:22" Foreground="{StaticResource TextDim}" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Text="İHA-01 Batarya seviyesi %20'nin altına düştü." Foreground="{StaticResource TextMain}" FontSize="12" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,5,10,5"/>
+                    </Grid>
+                </Border>
+            </ListBoxItem>
+
+            <ListBoxItem>
+                <Border Background="{StaticResource BorderColor}" CornerRadius="4" Padding="0" MinHeight="40">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Background="{StaticResource CriticalRed}" CornerRadius="4,0,0,4"/>
+                        <TextBlock Grid.Column="1" Text="14:25" Foreground="{StaticResource TextDim}" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Text="MOTOR ARIZASI TESPİT EDİLDİ! Acil iniş prosedürü başlatıldı." Foreground="White" FontSize="12" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,5,10,5"/>
+                    </Grid>
+                </Border>
+            </ListBoxItem>
+
+            <ListBoxItem>
+                <Border Background="{StaticResource BorderColor}" CornerRadius="4" Padding="0" MinHeight="40">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4"/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0" Background="Gray" CornerRadius="4,0,0,4"/>
+                        <TextBlock Grid.Column="1" Text="14:30" Foreground="{StaticResource TextDim}" FontSize="11" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Text="Görev noktasına başarıyla ulaşıldı." Foreground="{StaticResource TextMain}" FontSize="12" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,5,10,5"/>
+                    </Grid>
+                </Border>
+            </ListBoxItem>
+
+            <ListBoxItem Height="40" Background="{StaticResource BorderColor}" Margin="0,0,0,5" Opacity="0.3"/>
+            <ListBoxItem Height="40" Background="{StaticResource BorderColor}" Margin="0,0,0,5" Opacity="0.3"/>
+            <ListBoxItem Height="40" Background="{StaticResource BorderColor}" Margin="0,0,0,5" Opacity="0.3"/>
+        </ListBox>
+    </Grid>
+</UserControl>
